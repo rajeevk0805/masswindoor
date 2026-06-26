@@ -1,6 +1,7 @@
 "use client";
 
 import { Card } from "@/components/ui/card";
+import Image from "next/image";
 
 export default function HardwareSelector({ selectedHardware, onSelect }) {
   return (
@@ -15,9 +16,11 @@ export default function HardwareSelector({ selectedHardware, onSelect }) {
       >
         <div className="flex flex-col items-center">
           <div className=" flex items-center justify-center">
-            <img
+            <Image
               src="/assets/crescent.svg"
               alt="Standard Handle"
+              width={80}
+              height={80}
               className="max-w-full max-h-full"
             />
           </div>
@@ -35,9 +38,11 @@ export default function HardwareSelector({ selectedHardware, onSelect }) {
       >
         <div className="flex flex-col items-center">
           <div className="flex items-center justify-center">
-            <img
+            <Image
               src="/assets/cockspur.svg"
               alt="Premium Handle"
+              width={80}
+              height={80}
               className="max-w-full max-h-full"
             />
           </div>
@@ -55,9 +60,11 @@ export default function HardwareSelector({ selectedHardware, onSelect }) {
       >
         <div className="flex flex-col items-center">
           <div className="flex items-center justify-center">
-            <img
+            <Image
               src="/assets/espagnolette.svg"
               alt="Security Handle"
+              width={80}
+              height={80}
               className="max-w-full max-h-full"
             />
           </div>

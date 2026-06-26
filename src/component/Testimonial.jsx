@@ -89,7 +89,7 @@ export function TestimonialCarousel() {
               What Our Clients Say
             </h2>
             <p className="text-gray-500  text-center">
-              Hear experiences from those who've trusted us with their custom
+              Hear experiences from those who{'\''}ve trusted us with their custom
               projects and see what sets us apart.
             </p>
           </div>

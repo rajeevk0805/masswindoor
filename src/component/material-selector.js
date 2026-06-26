@@ -1,6 +1,7 @@
 "use client";
 
 import { Card } from "@/components/ui/card";
+import Image from "next/image";
 
 export default function MaterialSelector({ selectedMaterial, onSelect }) {
   return (
@@ -13,9 +14,11 @@ export default function MaterialSelector({ selectedMaterial, onSelect }) {
       >
         <div className="flex flex-col items-center">
           <div className="w-18 h-18 flex items-center justify-center">
-            <img
+            <Image
               src="/assets/low_maintance.svg"
               alt="UPVC Material"
+              width={72}
+              height={72}
               className="max-w-full max-h-full"
             />
           </div>
@@ -36,9 +39,11 @@ export default function MaterialSelector({ selectedMaterial, onSelect }) {
       >
         <div className="flex flex-col items-center">
           <div className="w-18 h-18 flex items-center justify-center">
-            <img
+            <Image
               src="/assets/high-main.svg"
               alt="Aluminum Material"
+              width={72}
+              height={72}
               className="max-w-full max-h-full"
             />
           </div>

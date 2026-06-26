@@ -8,17 +8,19 @@ import { Button } from "@/components/ui/button"
 import { CalendarDays, Users, Mail, Phone, Clock } from "lucide-react"
 
 export default function AdminDashboard() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [isAuthenticated, setIsAuthenticated] = useState(() => {
+    if (typeof window !== "undefined") {
+      return !!localStorage.getItem("authToken")
+    }
+    return false
+  })
   const router = useRouter()
 
   useEffect(() => {
-    const token = localStorage.getItem("authToken")
-    if (!token) {
+    if (!isAuthenticated) {
       router.push("/")
-    } else {
-      setIsAuthenticated(true)
     }
-  }, [router])
+  }, [isAuthenticated, router])
 
   const handleLogout = () => {
     localStorage.removeItem("authToken")
@@ -82,7 +84,7 @@ export default function AdminDashboard() {
       <div className="flex justify-between items-center">
         <div>
           <h1 className="text-3xl font-bold">Admin Dashboard</h1>
-          <p className="text-muted-foreground">Welcome back! Here's what's happening.</p>
+          <p className="text-muted-foreground">Welcome back! Here{'\''}s what{'\''}s happening.</p>
         </div>
         <Button onClick={handleLogout} variant="outline">
           Logout

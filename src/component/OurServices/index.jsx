@@ -162,7 +162,7 @@ export default function ServicesSection() {
                 products.
               </p>
               <p className="text-gray-600">
-                It’s versatile, eco-friendly, and available in many colors and
+                It{'\''}s versatile, eco-friendly, and available in many colors and
                 textures, making it ideal for various materials and long-lasting
                 finishes.
               </p>

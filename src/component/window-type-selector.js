@@ -1,6 +1,7 @@
 "use client";
 
 import { Card } from "@/components/ui/card";
+import Image from "next/image";
 
 export default function WindowTypeSelector({ selectedType, onSelect }) {
   return (
@@ -13,9 +14,11 @@ export default function WindowTypeSelector({ selectedType, onSelect }) {
       >
         <div className="flex flex-col items-center">
           <div className="w-24 h-24 flex items-center justify-center">
-            <img
+            <Image
               src="/assets/slider.svg"
               alt="Slider Window"
+              width={96}
+              height={96}
               className="max-w-full max-h-full"
             />
           </div>
@@ -34,9 +37,11 @@ export default function WindowTypeSelector({ selectedType, onSelect }) {
       >
         <div className="flex flex-col items-center">
           <div className="w-24 h-24 flex items-center justify-center">
-            <img
+            <Image
               src="/assets/casement.svg"
               alt="Casement Window"
+              width={96}
+              height={96}
               className="max-w-full max-h-full"
             />
           </div>

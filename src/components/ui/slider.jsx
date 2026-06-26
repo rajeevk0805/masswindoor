@@ -20,11 +20,12 @@ function Slider({
         ? defaultValue
         : [min, max], [value, defaultValue, min, max])
 
+  const isControlled = value !== undefined
+
   return (
     (<SliderPrimitive.Root
       data-slot="slider"
-      defaultValue={defaultValue}
-      value={value}
+      {...(isControlled ? { value } : { defaultValue })}
       min={min}
       max={max}
       className={cn(

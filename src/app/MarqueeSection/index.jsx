@@ -77,10 +77,12 @@ const MarqueeSection = () => {
                   {item?.title}
                 </h2>
 
-                <img
+                <Image
                   key={index}
                   src="/marquee.svg"
                   alt="mass"
+                  width={80}
+                  height={80}
                   className={"mx-12"}
                 />
               </div>

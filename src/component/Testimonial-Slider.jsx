@@ -141,7 +141,7 @@ export default function TestimonialSlider() {
                         {testimonial.rating}/5 Reviews
                       </span>
                     </div>
-                    <p className="text-sm mb-6 italic">"{testimonial.quote}"</p>
+                    <p className="text-sm mb-6 italic">&ldquo;{testimonial.quote}&rdquo;</p>
                     <div className="flex items-center">
                       <Avatar className="h-12 w-12 border">
                         <AvatarImage

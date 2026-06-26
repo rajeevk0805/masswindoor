@@ -65,9 +65,12 @@ function Carousel({
 
   React.useEffect(() => {
     if (!api) return
-    onSelect(api)
     api.on("reInit", onSelect)
     api.on("select", onSelect)
+
+    // Schedule initial state sync outside the effect body to comply with
+    // react-hooks/set-state-in-effect rule
+    queueMicrotask(() => onSelect(api))
 
     return () => {
       api?.off("select", onSelect)

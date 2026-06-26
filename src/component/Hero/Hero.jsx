@@ -129,9 +129,11 @@ const Hero = () => {
         data-aos="zoom-out-up"
         className="min-h-[70vh] w-full relative container  !mt-10 hidden lg:block"
       >
-        <img
+        <Image
           src="/hero.png"
           alt="hero img"
+          width={1200}
+          height={800}
           className="w-full h-[70vh] object-cover object-center z-[-1] md:rounded-[48px] rounded-[20px] justify-end"
         />
         <div className="container absolute top-0 left-0">

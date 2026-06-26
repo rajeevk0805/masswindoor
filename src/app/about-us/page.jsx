@@ -218,7 +218,7 @@ function page() {
                 To establish ourselves as the premier window and door solutions
                 provider by consistently delivering high-quality products,
                 professional installation, and outstanding service to enhance
-                the comfort and security of our clients' homes.
+                the comfort and security of our clients{'\''} homes.
               </p>
             </div>
 
@@ -287,9 +287,11 @@ function page() {
               >
                 <div className="w-full h-[280px] bg-gray-200">
                   {/* Replace with real image */}
-                  <img
+                  <Image
                     src={member.image}
                     alt={member.name}
+                    width={280}
+                    height={280}
                     className="w-full h-full object-cover"
                   />
                 </div>

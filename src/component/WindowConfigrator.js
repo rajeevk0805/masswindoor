@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import Image from "next/image";
+import { useState, useEffect, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
@@ -24,7 +25,6 @@ import { toast } from "react-toastify";
 import BookingModal from "./Booking-modal";
 
 export default function WindowCustomizer({ editId }) {
-  const [progress, setProgress] = useState(25);
   const [selectedType, setSelectedType] = useState("slider");
   const [selectedDimensions, setSelectedDimensions] = useState({
     width: 0,
@@ -39,7 +39,26 @@ export default function WindowCustomizer({ editId }) {
   const [loading, setLoading] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [saving, setSaving] = useState(false);
+  // Track which sections have been interacted with
+  const [sectionsCompleted, setSectionsCompleted] = useState({
+    windowType: true,
+    dimensions: false,
+    material: false,
+    glassType: false,
+    color: false,
+    hardware: false,
+  });
   const router = useRouter();
+
+  // Derive progress from sectionsCompleted — no effect needed
+  const progress = useMemo(() => {
+    const completedCount =
+      Object.values(sectionsCompleted).filter(Boolean).length;
+    const totalSections = Object.keys(sectionsCompleted).length;
+    return Math.floor(
+      10 + (completedCount / totalSections) * 90
+    );
+  }, [sectionsCompleted]);
 
   // Load existing booking data when in edit mode
   useEffect(() => {
@@ -62,7 +81,6 @@ export default function WindowCustomizer({ editId }) {
             setSelectedColor(booking.color || "white");
             setSelectedHardware(booking.hardware || "Crescent-Handle");
             setFinishType(booking.finish || "mattle");
-            setProgress(100);
             setSectionsCompleted({
               windowType: true,
               dimensions: true,
@@ -148,9 +166,16 @@ export default function WindowCustomizer({ editId }) {
     setIsModalOpen(true);
   };
 
-
   const handleReset = () => {
     setResetting(true);
+    setSectionsCompleted({
+      windowType: false,
+      dimensions: false,
+      material: false,
+      glassType: false,
+      color: false,
+      hardware: false,
+    });
     setTimeout(() => {
       setSelectedType("slider");
       setSelectedDimensions({ width: 635, height: 890 });
@@ -159,29 +184,17 @@ export default function WindowCustomizer({ editId }) {
       setSelectedColor("white");
       setSelectedHardware("Crescent-Handle");
       setFinishType("mattle");
-      setProgress(25);
+      setSectionsCompleted({
+        windowType: true,
+        dimensions: false,
+        material: false,
+        glassType: false,
+        color: false,
+        hardware: false,
+      });
       setResetting(false);
-    }, 500); // simulate a short delay
+    }, 500);
   };
-  // Track which sections have been interacted with
-  const [sectionsCompleted, setSectionsCompleted] = useState({
-    windowType: true,
-    dimensions: false,
-    material: false,
-    glassType: false,
-    color: false,
-    hardware: false,
-  });
-
-  useEffect(() => {
-    const completedCount =
-      Object.values(sectionsCompleted).filter(Boolean).length;
-    const totalSections = Object.keys(sectionsCompleted).length;
-    const calculatedProgress = Math.floor(
-      10 + (completedCount / totalSections) * 90
-    );
-    setProgress(calculatedProgress);
-  }, [sectionsCompleted]);
 
   // Update section completion status
   const markSectionCompleted = (section) => {
@@ -214,9 +227,11 @@ export default function WindowCustomizer({ editId }) {
           {/* Left side - Window Preview */}
           <div className="flex items-center flex-col justify-center relative ">
             <div className="bg-[#EBEBEB]  rounded-lg p-6">
-              <img
+              <Image
                 src={`/assets/${selectedType}.svg`}
                 alt="Window Preview"
+                width={400}
+                height={300}
                 className="w-full"
               />
             </div>

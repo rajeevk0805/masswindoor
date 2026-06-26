@@ -10,7 +10,7 @@ function WhyChoose() {
         <div>
           <h2 className="text-4xl leading-12 lg:leading-17 md:text-6xl font-[500px] mb-6">Why Choose <br /> Us?</h2>
           <p className="text-base md:text-[18px] mb-6 max-w-md">
-            At MASS, we’re committed to delivering exceptional quality, transparent pricing,
+            At MASS, we{'\''}re committed to delivering exceptional quality, transparent pricing,
             and tailored solutions in aluminium window and door systems. Here's why customers prefer us:
           </p>
 

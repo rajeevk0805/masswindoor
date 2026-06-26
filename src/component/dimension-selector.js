@@ -4,7 +4,7 @@
 import { Slider } from "@/components/ui/slider"
 import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useMemo, useRef, useCallback } from "react"
 
 const standardSizes = [
   { width: 1000, height: 1200 },
@@ -22,14 +22,22 @@ export default function DimensionsSelector({ dimensions, onChange }) {
   const minHeight = 600
   const maxHeight = 1500
 
+  const onChangeRef = useRef(onChange)
   useEffect(() => {
-    onChange({ width, height })
+    onChangeRef.current = onChange
+  }, [onChange])
+
+  useEffect(() => {
+    onChangeRef.current({ width, height })
   }, [width, height])
 
   const handleStandardSizeClick = (size) => {
     setWidth(size.width)
     setHeight(size.height)
   }
+
+  const widthValue = useMemo(() => [width], [width])
+  const heightValue = useMemo(() => [height], [height])
 
   return (
     <div className="space-y-6">
@@ -51,7 +59,7 @@ export default function DimensionsSelector({ dimensions, onChange }) {
             min={minWidth}
             max={maxWidth}
             step={5}
-            value={[width]}
+            value={widthValue}
             onValueChange={(value) => setWidth(value[0])}
             className="flex-1"
           />
@@ -80,7 +88,7 @@ export default function DimensionsSelector({ dimensions, onChange }) {
             min={minHeight}
             max={maxHeight}
             step={5}
-            value={[height]}
+            value={heightValue}
             onValueChange={(value) => setHeight(value[0])}
             className="flex-1"
           />
