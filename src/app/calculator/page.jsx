@@ -3,9 +3,9 @@
 import HeroSection from "@/component/HeroSection";
 import WindowCustomizer from "@/component/WindowConfigrator";
 import { useSearchParams } from "next/navigation";
-import React from "react";
+import React, { Suspense } from "react";
 
-function Page() {
+function CalculatorContent() {
   const searchParams = useSearchParams();
   const editId = searchParams.get("edit");
 
@@ -17,6 +17,14 @@ function Page() {
       />
       <WindowCustomizer editId={editId} />
     </div>
+  );
+}
+
+function Page() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <CalculatorContent />
+    </Suspense>
   );
 }
 
