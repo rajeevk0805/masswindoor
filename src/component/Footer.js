@@ -103,7 +103,7 @@ export default function Footer() {
                   <br />
                 </li>
                 <li className="text-white">+91 9334154407</li>
-                <li className="text-white">mohdsaleh129@gmail.com</li>
+                <li className="text-white">rajeev@gmail.com</li>
               </ul>
             </div>
           </div>
@@ -113,7 +113,7 @@ export default function Footer() {
         <div className="mt-12  text-[10px] lg:text-[14px] border-gray-800 pt-8 container py-2 flex justify-between flex-col lg:flex-row ">
           <p className=" text-[#004430] mb-4 lg:mb-0 ">
             &copy; {new Date().getFullYear()} All rights reserved. | Built with
-            ❤️ by Destiny IT Services Pvt. Ltd..
+            ❤️ by Rajeev.
           </p>
           <div className="items-center m-auto">
             <Link href="/terms-&-conditions" className="text-[#004430] pr-8">

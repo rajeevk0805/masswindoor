@@ -1,20 +1,3 @@
-// import mongoose, { Schema } from "mongoose";
-
-// const BookingSchema = new Schema({
-//   type: { type: String, required: true },
-//   dimensions: {
-//     width: { type: Number, required: true },
-//     height: { type: Number, required: true },
-//   },
-//   material: { type: String, required: true },
-//   glassType: { type: String, required: true },
-//   color: { type: String, required: true },
-//   finish: { type: String, required: true },
-//   hardware: { type: String, required: true },
-// });
-
-// export const Booking =
-//   mongoose.models.Booking || mongoose.model("Booking", BookingSchema);
 import mongoose, { Schema } from "mongoose";
 
 const BookingSchema = new Schema({

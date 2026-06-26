@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useEffect, useState } from "react";
@@ -85,7 +84,7 @@ export default function BookingsPage() {
     (booking) =>
       booking.type.toLowerCase().includes(searchTerm.toLowerCase()) ||
       booking.material.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      booking.color.toLowerCase().includes(searchTerm.toLowerCase())
+      booking.color.toLowerCase().includes(searchTerm.toLowerCase()),
   );
 
   const getStatusColor = (status) => {
@@ -128,7 +127,9 @@ export default function BookingsPage() {
       });
       const data = await response.json();
       if (data.success) {
-        setBookings((prev) => prev.filter((b) => b._id !== bookingToDelete._id));
+        setBookings((prev) =>
+          prev.filter((b) => b._id !== bookingToDelete._id),
+        );
         toast.success("Booking deleted successfully");
       } else {
         toast.error(data.message || "Failed to delete booking");
@@ -319,17 +320,25 @@ export default function BookingsPage() {
                                   year: "numeric",
                                   month: "short",
                                   day: "numeric",
-                                }
+                                },
                               )
                             : "N/A"}
                         </div>
                       </TableCell>
                       <TableCell>
                         <div className="flex gap-1">
-                          <Button variant="ghost" size="sm" onClick={() => handleView(booking)}>
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => handleView(booking)}
+                          >
                             <Eye className="h-4 w-4" />
                           </Button>
-                          <Button variant="ghost" size="sm" onClick={() => handleEdit(booking)}>
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => handleEdit(booking)}
+                          >
                             <Edit className="h-4 w-4" />
                           </Button>
                           <Button
@@ -364,35 +373,62 @@ export default function BookingsPage() {
             <div className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <p className="text-sm font-medium text-muted-foreground">Customer</p>
-                  <p className="font-medium capitalize">{selectedBooking.username}</p>
+                  <p className="text-sm font-medium text-muted-foreground">
+                    Customer
+                  </p>
+                  <p className="font-medium capitalize">
+                    {selectedBooking.username}
+                  </p>
                 </div>
                 <div>
-                  <p className="text-sm font-medium text-muted-foreground">Email</p>
+                  <p className="text-sm font-medium text-muted-foreground">
+                    Email
+                  </p>
                   <p className="font-medium">{selectedBooking.email}</p>
                 </div>
                 <div>
-                  <p className="text-sm font-medium text-muted-foreground">Phone</p>
+                  <p className="text-sm font-medium text-muted-foreground">
+                    Phone
+                  </p>
                   <p className="font-medium">{selectedBooking.phone}</p>
                 </div>
                 <div>
-                  <p className="text-sm font-medium text-muted-foreground">Type</p>
-                  <Badge variant="outline" className="capitalize">{selectedBooking.type}</Badge>
+                  <p className="text-sm font-medium text-muted-foreground">
+                    Type
+                  </p>
+                  <Badge variant="outline" className="capitalize">
+                    {selectedBooking.type}
+                  </Badge>
                 </div>
                 <div>
-                  <p className="text-sm font-medium text-muted-foreground">Dimensions</p>
-                  <p className="font-medium">{selectedBooking.dimensions.width}" x {selectedBooking.dimensions.height}"</p>
+                  <p className="text-sm font-medium text-muted-foreground">
+                    Dimensions
+                  </p>
+                  <p className="font-medium">
+                    {selectedBooking.dimensions.width}" x{" "}
+                    {selectedBooking.dimensions.height}"
+                  </p>
                 </div>
                 <div>
-                  <p className="text-sm font-medium text-muted-foreground">Material</p>
-                  <p className="font-medium capitalize">{selectedBooking.material}</p>
+                  <p className="text-sm font-medium text-muted-foreground">
+                    Material
+                  </p>
+                  <p className="font-medium capitalize">
+                    {selectedBooking.material}
+                  </p>
                 </div>
                 <div>
-                  <p className="text-sm font-medium text-muted-foreground">Glass Type</p>
-                  <p className="font-medium capitalize">{selectedBooking.glassType}</p>
+                  <p className="text-sm font-medium text-muted-foreground">
+                    Glass Type
+                  </p>
+                  <p className="font-medium capitalize">
+                    {selectedBooking.glassType}
+                  </p>
                 </div>
                 <div>
-                  <p className="text-sm font-medium text-muted-foreground">Color</p>
+                  <p className="text-sm font-medium text-muted-foreground">
+                    Color
+                  </p>
                   <div className="flex items-center gap-2">
                     <div
                       className="w-4 h-4 rounded border"
@@ -403,20 +439,30 @@ export default function BookingsPage() {
                             : selectedBooking.color,
                       }}
                     />
-                    <span className="font-medium capitalize">{selectedBooking.color}</span>
+                    <span className="font-medium capitalize">
+                      {selectedBooking.color}
+                    </span>
                   </div>
                 </div>
                 <div>
-                  <p className="text-sm font-medium text-muted-foreground">Finish</p>
-                  <p className="font-medium capitalize">{selectedBooking.finish}</p>
+                  <p className="text-sm font-medium text-muted-foreground">
+                    Finish
+                  </p>
+                  <p className="font-medium capitalize">
+                    {selectedBooking.finish}
+                  </p>
                 </div>
                 <div>
-                  <p className="text-sm font-medium text-muted-foreground">Hardware</p>
+                  <p className="text-sm font-medium text-muted-foreground">
+                    Hardware
+                  </p>
                   <p className="font-medium">{selectedBooking.hardware}</p>
                 </div>
               </div>
               <div>
-                <p className="text-sm font-medium text-muted-foreground">Date</p>
+                <p className="text-sm font-medium text-muted-foreground">
+                  Date
+                </p>
                 <p className="font-medium">
                   {selectedBooking.createdAt
                     ? new Date(selectedBooking.createdAt).toLocaleDateString(
@@ -427,7 +473,7 @@ export default function BookingsPage() {
                           day: "numeric",
                           hour: "2-digit",
                           minute: "2-digit",
-                        }
+                        },
                       )
                     : "N/A"}
                 </p>
@@ -451,14 +497,24 @@ export default function BookingsPage() {
               Delete Booking
             </DialogTitle>
             <DialogDescription>
-              Are you sure you want to delete this booking? This action cannot be undone.
+              Are you sure you want to delete this booking? This action cannot
+              be undone.
             </DialogDescription>
           </DialogHeader>
           {bookingToDelete && (
             <div className="space-y-2 text-sm">
-              <p><strong>Customer:</strong> <span className="capitalize">{bookingToDelete.username}</span></p>
-              <p><strong>Type:</strong> <span className="capitalize">{bookingToDelete.type}</span></p>
-              <p><strong>Dimensions:</strong> {bookingToDelete.dimensions.width}" x {bookingToDelete.dimensions.height}"</p>
+              <p>
+                <strong>Customer:</strong>{" "}
+                <span className="capitalize">{bookingToDelete.username}</span>
+              </p>
+              <p>
+                <strong>Type:</strong>{" "}
+                <span className="capitalize">{bookingToDelete.type}</span>
+              </p>
+              <p>
+                <strong>Dimensions:</strong> {bookingToDelete.dimensions.width}"
+                x {bookingToDelete.dimensions.height}"
+              </p>
             </div>
           )}
           <div className="flex justify-end gap-2">
@@ -485,8 +541,19 @@ export default function BookingsPage() {
                     fill="none"
                     viewBox="0 0 24 24"
                   >
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    />
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8v8H4z"
+                    />
                   </svg>
                   Deleting...
                 </span>
