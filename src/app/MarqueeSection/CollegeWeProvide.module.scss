@@ -1,0 +1,134 @@
+.college_provide {
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 4rem;
+    z-index: -999999;
+    
+  }
+  
+  .slide_college {
+    display: flex;
+    overflow-x: hidden; // Hide the scrollbar
+    scroll-behavior: smooth; // Smooth scrolling effect
+    white-space: nowrap; // Prevent wrapping of items
+    position: relative;
+  }
+  
+  .college_logo {
+    display: flex;
+    flex-shrink: 0; // Prevent flex items from shrinking
+    animation: slide 60s linear infinite; // Slow down the sliding animation
+    gap: 4rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .slide_college::after{
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 150px;
+    height: 100%;
+    background: linear-gradient(to left, white, transparent);
+  }
+  .slide_college::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 150px;
+    height: 100%;
+    background: linear-gradient(to right, white, transparent);
+    z-index: 99;
+  }
+  
+  
+  .college_logo img {
+    margin-right: 5px; // Space between images
+    height: 50px; // Set a fixed height for the images
+    object-fit: contain;
+    padding: 0.3rem;
+    transition: all 0.5s ease;
+    border-radius: 10px;
+    // box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+    // Maintain aspect ratio within the given dimensions
+    // &:hover{
+    // border: none;
+    // box-shadow: rgba(255, 130, 13, 0.74) 0px 0px 0px 2px, rgba(255, 190, 12, 0.996) 0px 4px 6px -1px, rgba(255, 170, 85, 0.751) 0px 1px 0px inset;
+    // }
+  }
+  
+  @keyframes slide {
+    0% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(-50%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  
+  //responsive
+  
+  @media (max-width: 768px) {
+    .college_provide {
+      padding-top: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 3rem;
+    }
+  
+    .slide_college {
+      width: 90vw; // Increase the width to 90% of the viewport width for better visibility on smaller screens
+    }
+  
+    .college_logo {
+      gap: 2rem;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+      animation: slide 40s linear infinite; // Speed up the sliding animation for better UX on smaller screens
+    }
+  
+    .college_logo img {
+      width: 150px; // Adjust image size
+      height: 60px;
+      margin-right: 3px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .college_provide {
+      padding-top: 1.5rem;
+      // margin-bottom: 8rem;
+    }
+  
+    .slide_college {
+      width: 100%;
+      padding: 0 1.5rem;
+      gap: 1rem;
+    }
+  
+    .college_logo {
+      gap: 1rem;
+      padding-top: 0.3rem;
+      padding-bottom: 0.3rem;
+      gap: 1rem;
+      animation: slide 100s linear infinite; // Further speed up the sliding animation
+    }
+  
+    .college_logo img {
+      width: 110px; // Further reduce image size
+      height: 70px;
+      margin-right: 2px;
+    }
+  }
+  

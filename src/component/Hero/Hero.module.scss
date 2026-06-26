@@ -1,0 +1,95 @@
+.button{
+    width: 100%;
+    height: 100%;
+    border: 18px solid white;
+    border-radius: 30px;
+    background: #0C8582;
+    padding: 24px 0;
+    display: flex;
+    font-weight: 500;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    @media (max-width: 768px) {
+        font-size: 12px;
+    }
+    &::before{
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 18px;
+        transform: translateY(-50%);
+        background: url('../../../public/btn-left-bg.png');
+        mix-blend-mode: multiply;
+        width: 30%;
+        height: calc(100% - 34px);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    &::after{
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: 18px;
+        transform: translateY(-50%);
+        background: url('../../../public/btn-right-bg.png');
+        mix-blend-mode: multiply;
+        width: 30%;
+        height: calc(100% - 34px);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    @media (max-width: 576px) {
+        width: 100%;
+    }
+}
+.button_wrapper{
+    // position: relative;
+    @media (max-width: 576px) {
+        width: 100%;
+    }
+}
+
+.button_wrapper::before{
+    content: '';
+    position: absolute;
+    bottom: 1px;
+    height: 50px;
+    width: 50px;
+    background: rgba(255, 255, 255, 0);
+    border-radius: 50%;
+    right: -50px;
+    overflow: hidden;
+    box-shadow: -24px 20px rgb(255, 255, 255);
+    @media (max-width: 576px) {
+        position: unset;
+        background: unset;
+        box-shadow: unset;
+        height: unset;
+        width: unset;
+    }
+    
+}
+.button_wrapper::after{
+    content: '';
+    position: absolute;
+    top: -50px;
+    overflow: hidden;
+    left: -0.5px;
+    height: 50px;
+    width: 50px;
+    background: rgba(255, 255, 255, 0);
+    border-radius: 50%;
+    box-shadow: -20px 24px rgb(255, 255, 255);
+    @media (max-width: 576px) {
+        position: unset;
+        background: unset;
+        box-shadow: unset;
+        height: unset;
+        width: unset;
+    }
+    // box-shadow: ;
+}
